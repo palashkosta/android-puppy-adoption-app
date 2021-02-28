@@ -6,12 +6,13 @@
 
 
 ## :scroll: Description
-<!--- Describe your app in one or two sentences -->
+Puppy Adoption App showing list of puppies and their details built using Android Jetpack Compose
 
 
 ## :bulb: Motivation and Context
-<!--- Optionally point readers to interesting parts of your submission. -->
-<!--- What are you especially proud of? -->
+Android Jetpack Compose
+- Very quick and easy way to create Android UI.
+- Industry preferred "Declarative UI" approach in Android App.
 
 
 ## :camera_flash: Screenshots
