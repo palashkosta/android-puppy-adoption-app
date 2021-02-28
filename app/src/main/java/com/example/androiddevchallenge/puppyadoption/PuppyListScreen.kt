@@ -1,3 +1,18 @@
+/*
+ * Copyright 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.example.androiddevchallenge.puppyadoption
 
 import androidx.compose.foundation.Image
@@ -8,13 +23,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.ContentAlpha
+import androidx.compose.material.Divider
+import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.Divider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
@@ -28,32 +43,36 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.navigate
 import com.example.androiddevchallenge.R
 
-
 @Composable
 fun PuppyListScreen(navController: NavController) {
-    Scaffold (
+    Scaffold(
         topBar = { PuppyListScreenAppBar() },
         content = {
             PuppyListContent(navController = navController)
-        })
+        }
+    )
 }
 
 @Composable
 private fun PuppyListScreenAppBar() {
-    TopAppBar(title = {
-        Text(text = stringResource(R.string.title_puppy_list))
-    })
+    TopAppBar(
+        title = {
+            Text(text = stringResource(R.string.title_puppy_list))
+        }
+    )
 }
 
 @Composable
 private fun PuppyListContent(navController: NavController) {
-    LazyColumn(content = {
-        val puppyList = PuppyAdoptionRepository.loadDummyPuppyList()
-        items(puppyList) { puppyItem ->
-            PuppyListItem(puppyItem = puppyItem, navController = navController)
-            PuppyDivider()
+    LazyColumn(
+        content = {
+            val puppyList = PuppyAdoptionRepository.loadDummyPuppyList()
+            items(puppyList) { puppyItem ->
+                PuppyListItem(puppyItem = puppyItem, navController = navController)
+                PuppyDivider()
+            }
         }
-    })
+    )
 }
 
 // puppy row item composable
@@ -65,9 +84,12 @@ private fun PuppyListItem(puppyItem: PuppyItem, navController: NavController) {
             .padding(16.dp)
     ) {
         PuppyListItemImage(puppyItem = puppyItem)
-        PuppyListItemContent(puppyItem = puppyItem, modifier = Modifier
-            .weight(1f)
-            .align(Alignment.CenterVertically))
+        PuppyListItemContent(
+            puppyItem = puppyItem,
+            modifier = Modifier
+                .weight(1f)
+                .align(Alignment.CenterVertically)
+        )
     }
 }
 
